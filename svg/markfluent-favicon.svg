@@ -1,3 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Markfluent">
-  <rect width="64" height="64" rx="15" fill="#EFECFF"/><g transform="translate(4.5 4.5) scale(0.86)"><path fill="#7E5EFF" d="M9.4 30.8H49.8A2.6 2.6 0 0 1 51.8 35.2L35.9 55.7V60.2A2.2 2.2 0 0 1 33.7 62.4H25.5A2.2 2.2 0 0 1 23.3 60.2V55.7L7.4 35.2A2.6 2.6 0 0 1 9.4 30.8Z"/><path d="M8.6 22.3 L21.2 12.1 L34 22.3 L47.6 10.2" fill="none" stroke="#7E5EFF" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round"/><path fill="#7E5EFF" stroke="#7E5EFF" stroke-width="2" stroke-linejoin="round" d="M56.40 2.40L52.16 18.72L39.69 4.65Z"/></g>
+  <style>
+    .tile { fill: #EFECFF; }
+    .mark { fill: #7E5EFF; }
+    .line { fill: none; stroke: #7E5EFF; stroke-width: 6.7; stroke-linecap: round; stroke-linejoin: round; }
+    .head { fill: #7E5EFF; stroke: #7E5EFF; stroke-width: 2; stroke-linejoin: round; }
+    @media (prefers-color-scheme: dark) {
+      .tile { fill: #221847; }
+      .mark { fill: #9B84FF; }
+      .line { stroke: #9B84FF; }
+      .head { fill: #9B84FF; stroke: #9B84FF; }
+    }
+  </style>
+  <rect class="tile" width="64" height="64" rx="15"/>
+  <g transform="translate(4.5 4.5) scale(0.86)">
+    <path class="mark" d="M9.4 30.8H49.8A2.6 2.6 0 0 1 51.8 35.2L35.9 55.7V60.2A2.2 2.2 0 0 1 33.7 62.4H25.5A2.2 2.2 0 0 1 23.3 60.2V55.7L7.4 35.2A2.6 2.6 0 0 1 9.4 30.8Z"/>
+    <path class="line" d="M8.6 22.3 L21.2 12.1 L34 22.3 L47.6 10.2"/>
+    <path class="head" d="M56.40 2.40L52.16 18.72L39.69 4.65Z"/>
+  </g>
 </svg>

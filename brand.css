@@ -1,5 +1,15 @@
-/* Markfluent brand tokens. Import once, then use the variables. */
+/*
+ * Markfluent brand tokens.
+ *
+ * Core palette (fixed): --mf-purple, --mf-ink, --mf-canvas, --mf-lavender, --mf-white.
+ * Semantic layer (follows the colour scheme): --mf-bg, --mf-surface, --mf-text, --mf-accent, ...
+ *
+ * Dark mode follows prefers-color-scheme by default. Force it with data-theme="dark"
+ * (or lock light with data-theme="light") on <html>.
+ */
+
 :root {
+  /* core palette */
   --mf-purple: #7e5eff;
   --mf-purple-rgb: 126, 94, 255;
   --mf-ink: #2d1e6b;
@@ -8,17 +18,66 @@
   --mf-lavender: #efecff;
   --mf-white: #ffffff;
 
+  /* type and shape */
   --mf-font: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
   --mf-radius: 12px;
   --mf-logo-height: 32px;
+
+  /* light semantics */
+  color-scheme: light;
+  --mf-bg: #fafaff;
+  --mf-surface: #ffffff;
+  --mf-surface-alt: #efecff;
+  --mf-text: #2d1e6b;
+  --mf-text-muted: #544585;
+  --mf-accent: #7e5eff;
+  --mf-accent-text: #6c4bf5;
+  --mf-on-accent: #ffffff;
+  --mf-border: #e4e0fa;
+  --mf-border-strong: #8b7bc9;
+  --mf-focus: #6c4bf5;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --mf-bg: #16102b;
+    --mf-surface: #221847;
+    --mf-surface-alt: #2d1e6b;
+    --mf-text: #ffffff;
+    --mf-text-muted: #b9aee6;
+    --mf-accent: #7e5eff;
+    --mf-accent-text: #9b84ff;
+    --mf-on-accent: #ffffff;
+    --mf-border: #3a2c6b;
+    --mf-border-strong: #7a65be;
+    --mf-focus: #9b84ff;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --mf-bg: #16102b;
+  --mf-surface: #221847;
+  --mf-surface-alt: #2d1e6b;
+  --mf-text: #ffffff;
+  --mf-text-muted: #b9aee6;
+  --mf-accent: #7e5eff;
+  --mf-accent-text: #9b84ff;
+  --mf-on-accent: #ffffff;
+  --mf-border: #3a2c6b;
+  --mf-border-strong: #7a65be;
+  --mf-focus: #9b84ff;
+}
+
+/* Logo helpers. Swap to the -reverse lockup in dark mode with <picture> in markup;
+   .mf-logo--reverse is for placing the white lockup on a dark panel regardless of scheme. */
 .mf-logo {
   display: inline-flex;
   align-items: center;
   gap: 0.6em;
   text-decoration: none;
-  color: var(--mf-ink);
+  color: var(--mf-text);
 }
 
 .mf-logo img,
@@ -30,4 +89,20 @@
 
 .mf-logo--reverse {
   color: var(--mf-white);
+}
+
+.mf-surface {
+  background: var(--mf-surface);
+  color: var(--mf-text);
+  border: 1px solid var(--mf-border);
+  border-radius: var(--mf-radius);
+}
+
+.mf-accent-text {
+  color: var(--mf-accent-text);
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--mf-focus);
+  outline-offset: 2px;
 }

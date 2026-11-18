@@ -18,11 +18,43 @@ site and falls back to the system sans otherwise; the assets themselves are unaf
 
 White (`#FFFFFF`) is the only additional colour, used for the reverse lockup on ink.
 
+## Dark mode
+
+The palette has a night set built from the ink family, so dark surfaces stay purple rather than going
+black or grey. `tokens.json` carries both sets under `modes`, `brand.css` exposes them as semantic
+variables that follow `prefers-color-scheme`.
+
+| Semantic token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `--mf-bg` | `#FAFAFF` | `#16102B` | Page background |
+| `--mf-surface` | `#FFFFFF` | `#221847` | Cards, panels |
+| `--mf-surface-alt` | `#EFECFF` | `#2D1E6B` | Chips, hover, nested panels |
+| `--mf-text` | `#2D1E6B` | `#FFFFFF` | Body and headings |
+| `--mf-text-muted` | `#544585` | `#B9AEE6` | Secondary copy |
+| `--mf-accent` | `#7E5EFF` | `#7E5EFF` | Icons, fills, large text |
+| `--mf-accent-text` | `#6C4BF5` | `#9B84FF` | Links and purple text |
+| `--mf-border` / `--mf-border-strong` | `#E4E0FA` / `#8B7BC9` | `#3A2C6B` / `#7A65BE` | Hairlines / interactive edges |
+
+Measured contrast, background to foreground:
+
+| Pair | Light | Dark |
+| --- | --- | --- |
+| Body text | 13.4:1 | 18.4:1 |
+| Muted text | 7.9:1 | 9.0:1 |
+| Accent text | 5.1:1 | 6.2:1 |
+| Brand purple (icons, large text) | 4.1:1 | 4.3:1 |
+| Strong border | 3.5:1 | 3.4:1 |
+| White on button purple `#6C4BF5` | 5.3:1 | 5.3:1 |
+
+Two things that keep it honest: brand purple `#7E5EFF` is a fill and icon colour, never body copy
+(4.1:1 light, 4.3:1 dark); and purple *text* moves to `#6C4BF5` on light and `#9B84FF` on night so
+links pass AA in both. Buttons keep one deep purple fill with white text in either scheme.
+
 ## Contents
 
 ```
-tokens.json                          colours and type as JSON
-brand.css                            the same as CSS custom properties + .mf-logo
+tokens.json                          colours, both modes and type as JSON
+brand.css                            CSS custom properties, light + dark semantics, .mf-logo
 preview.html                         human-readable brand sheet
 svg/
   markfluent-logo-horizontal.svg          primary lockup
@@ -54,9 +86,16 @@ wrapper that sizes a lockup by height:
 <link rel="stylesheet" href="/brand/brand.css">
 
 <a class="mf-logo" href="/" style="--mf-logo-height:32px">
-  <img src="/brand/svg/markfluent-logo-horizontal.svg" alt="Markfluent">
+  <picture>
+    <source srcset="/brand/svg/markfluent-logo-horizontal-reverse.svg" media="(prefers-color-scheme: dark)">
+    <img src="/brand/svg/markfluent-logo-horizontal.svg" alt="Markfluent">
+  </picture>
 </a>
 ```
+
+`brand.css` follows the OS scheme. To force one, put `data-theme="dark"` (or `"light"`) on `<html>`;
+the `picture` swap above only follows `prefers-color-scheme`, so if the site has its own theme toggle,
+render the matching `-reverse` file server-side or from the same state.
 
 Favicon and social tags:
 
@@ -76,7 +115,11 @@ The paths above assume this repo's contents are served from `/brand/` (the site 
 - Minimum sizes: horizontal lockup 120 px wide, stacked 96 px wide, icon 16 px (use the favicon tile
   at 16 px).
 - Do not stretch, rotate, outline, add shadows or gradients, or re-type the wordmark in another font.
-- Purple mark with ink wordmark on light surfaces; white wordmark with purple mark on ink. Nothing else.
+- Light: purple mark with ink wordmark on canvas, white or lavender.
+- Dark: purple mark with white wordmark on night or ink. Never ink text on a dark surface, never white
+  on lavender.
+- `brand.css` exposes a `--mf-logo-height` sized `.mf-logo` wrapper and a `--mf-focus` ring (5.1:1
+  light, 6.2:1 dark) for keyboard states.
 
 ## Regenerating
 

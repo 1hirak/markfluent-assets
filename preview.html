@@ -4,95 +4,217 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Markfluent brand assets</title>
+<link rel="stylesheet" href="brand.css">
 <style>
   @font-face{font-family:Satoshi;src:url('../fonts/satoshi-700.woff2') format('woff2');font-weight:700;font-display:swap}
   @font-face{font-family:Satoshi;src:url('../fonts/satoshi-500.woff2') format('woff2');font-weight:500;font-display:swap}
-  :root{--purple:#7E5EFF;--ink:#2D1E6B;--canvas:#FAFAFF;--lav:#EFECFF;--line:#E4E0FA}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--canvas);color:var(--ink);font:500 16px/1.6 Satoshi,ui-sans-serif,system-ui,sans-serif}
-  main{max-width:1040px;margin:0 auto;padding:48px 24px 96px}
-  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;letter-spacing:-0.02em;margin:0 0 8px}
-  h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#6b5ea8;margin:56px 0 16px}
-  p{margin:0 0 12px;max-width:62ch}
-  .lede{color:#4a3d7d;font-size:1.05rem}
-  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
-  .card.dark{background:var(--ink);border-color:var(--ink)}
-  .card.lav{background:var(--lav);border-color:var(--lav)}
-  .card img{display:block;width:100%;height:auto}
-  .cap{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a6fae}
-  .card.dark .cap{color:#b9aee6}
-  .sw{height:88px;border-radius:12px;border:1px solid rgb(45 30 107 / .08)}
-  table{width:100%;border-collapse:collapse;font-size:.95rem}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
-  th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#6b5ea8}
-  code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.9em;background:var(--lav);padding:2px 6px;border-radius:6px}
-  .row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-  .card img{max-width:100%}
-  .sizes figure{flex:0 0 auto}
+  body{margin:0;background:var(--mf-bg);color:var(--mf-text);font:500 16px/1.6 var(--mf-font);
+       -webkit-font-smoothing:antialiased}
+  main{max-width:1040px;margin:0 auto;padding:40px 24px 96px}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 8px}
+  h2{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mf-text-muted);margin:56px 0 14px}
+  p{margin:0 0 12px;max-width:64ch}
+  .lede{color:var(--mf-text-muted);font-size:1.05rem}
+  .top{display:flex;gap:24px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .switch{display:inline-flex;background:var(--mf-surface-alt);border:1px solid var(--mf-border);
+          border-radius:999px;padding:3px;gap:2px;flex:0 0 auto}
+  .switch button{font:inherit;font-size:.8rem;font-weight:700;letter-spacing:.02em;color:var(--mf-text-muted);
+          background:none;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+  .switch button[aria-pressed=true]{background:var(--mf-surface);color:var(--mf-text);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(148px,1fr))}
+  .card{background:var(--mf-surface);border:1px solid var(--mf-border);border-radius:16px;padding:22px;
+        display:flex;flex-direction:column;gap:12px}
+  .cap{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mf-text-muted)}
+  .sw{height:84px;border-radius:12px;border:1px solid var(--mf-border)}
+  .num{font-variant-numeric:tabular-nums}
+  .pair{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .panel{border-radius:16px;padding:24px;border:1px solid var(--p-border);background:var(--p-bg);color:var(--p-text)}
+  .panel.light{--p-bg:#FAFAFF;--p-surface:#FFFFFF;--p-alt:#EFECFF;--p-text:#2D1E6B;--p-muted:#544585;
+               --p-accent:#7E5EFF;--p-accent-text:#6C4BF5;--p-border:#E4E0FA}
+  .panel.dark{--p-bg:#16102B;--p-surface:#221847;--p-alt:#2D1E6B;--p-text:#FFFFFF;--p-muted:#B9AEE6;
+              --p-accent:#7E5EFF;--p-accent-text:#9B84FF;--p-border:#3A2C6B}
+  .panel .cap{color:var(--p-muted)}
+  .panel img{display:block;max-width:100%;height:auto}
+  .demo{background:var(--p-surface);border:1px solid var(--p-border);border-radius:12px;padding:18px;margin-top:14px}
+  .demo p{margin:0 0 10px;color:var(--p-text);font-size:.95rem}
+  .demo p.muted{color:var(--p-muted)}
+  .demo a{color:var(--p-accent-text);font-weight:700;text-decoration-thickness:2px;text-underline-offset:2px}
+  .btn{display:inline-block;font:inherit;font-weight:700;font-size:.9rem;color:#fff;background:#6C4BF5;
+       border:0;border-radius:10px;padding:9px 16px;cursor:pointer}
+  .btn.ghost{background:transparent;color:var(--p-accent-text);box-shadow:inset 0 0 0 1px var(--p-border)}
+  .sizes{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap}
+  .sizes figure{margin:0;text-align:center;flex:0 0 auto}
+  .sizes figure.tile{padding:3px;border-radius:9px;outline:1px solid var(--p-border)}
   .sizes img{display:block;max-width:none}
-  .sizes{display:flex;gap:28px;align-items:flex-end}
-  .sizes figure{margin:0;text-align:center}
-  .sizes figcaption{font-size:.7rem;color:#7a6fae;margin-top:8px}
-  .rule{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
-  .rule b{flex:0 0 60px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#6b5ea8;padding-top:3px}
+  .sizes figcaption{font-size:.68rem;color:var(--p-muted);margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--mf-border)}
+  th{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--mf-text-muted)}
+  code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.88em;background:var(--mf-surface-alt);
+       color:var(--mf-text);padding:2px 6px;border-radius:6px}
+  .badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:2px 8px;border-radius:999px;
+         background:var(--mf-surface-alt);color:var(--mf-accent-text)}
+  .rules{display:flex;flex-direction:column}
+  .rule{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--mf-border)}
+  .rule b{flex:0 0 62px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mf-text-muted);padding-top:3px}
+  .note{font-size:.86rem;color:var(--mf-text-muted)}
 </style>
 </head>
 <body>
 <main>
-  <h1>Markfluent brand assets</h1>
-  <p class="lede">Purple flow mark, Satoshi wordmark. Everything here is vector and re-derivable — pick the asset you need and keep the ratios.</p>
-
-  <h2>Colour</h2>
-  <div class="grid">
-    <div class="card"><div class="sw" style="background:#7E5EFF"></div><div class="cap">Primary purple</div><div>#7E5EFF<br>126, 94, 255</div></div>
-    <div class="card"><div class="sw" style="background:#2D1E6B"></div><div class="cap">Ink</div><div>#2D1E6B<br>45, 30, 107</div></div>
-    <div class="card"><div class="sw" style="background:#FAFAFF"></div><div class="cap">Canvas</div><div>#FAFAFF<br>250, 250, 255</div></div>
-    <div class="card"><div class="sw" style="background:#EFECFF"></div><div class="cap">Lavender</div><div>#EFECFF<br>239, 236, 255</div></div>
-  </div>
-
-  <h2>Logo</h2>
-  <div class="grid">
-    <div class="card"><div class="cap">Horizontal — primary</div><img src="svg/markfluent-logo-horizontal.svg" alt="Markfluent logo"></div>
-    <div class="card dark"><div class="cap">Horizontal — reverse</div><img src="svg/markfluent-logo-horizontal-reverse.svg" alt="Markfluent logo, reversed"></div>
-    <div class="card"><div class="cap">Stacked</div><img src="svg/markfluent-logo-stacked.svg" alt="Markfluent stacked logo" style="width:70%;margin:0 auto"></div>
-    <div class="card lav"><div class="cap">Wordmark</div><img src="svg/markfluent-wordmark.svg" alt="Markfluent wordmark"></div>
-  </div>
-
-  <h2>Icon and favicon</h2>
-  <div class="card">
-    <div class="sizes">
-      <figure><img src="svg/markfluent-icon.svg" style="width:96px;height:auto" alt=""><figcaption>96</figcaption></figure>
-      <figure><img src="svg/markfluent-icon.svg" style="width:48px;height:auto" alt=""><figcaption>48</figcaption></figure>
-      <figure><img src="svg/markfluent-icon.svg" style="width:32px;height:auto" alt=""><figcaption>32</figcaption></figure>
-      <figure><img src="svg/markfluent-favicon.svg" style="width:32px;height:auto" alt=""><figcaption>favicon</figcaption></figure>
-      <figure><img src="svg/markfluent-favicon.svg" style="width:16px;height:auto" alt=""><figcaption>16</figcaption></figure>
+  <div class="top">
+    <div>
+      <h1>Markfluent brand assets</h1>
+      <p class="lede">Purple flow mark, Satoshi wordmark, one palette with a light and a dark set. Vector throughout — pick the asset and keep the ratios.</p>
+    </div>
+    <div class="switch" role="group" aria-label="Colour scheme">
+      <button type="button" data-set="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-set="light" aria-pressed="false">Light</button>
+      <button type="button" data-set="dark" aria-pressed="false">Dark</button>
     </div>
   </div>
 
-  <h2>Social card</h2>
-  <div class="card"><img src="svg/markfluent-social-card.svg" alt="Markfluent social card"></div>
+  <h2>Core palette</h2>
+  <div class="grid">
+    <div class="card"><div class="sw" style="background:#7E5EFF;border-color:#7E5EFF"></div>
+      <div class="cap">Primary purple</div><div class="num">#7E5EFF<br>126, 94, 255</div>
+      <div class="note">Fills, icons, large text. Not body copy on light.</div></div>
+    <div class="card"><div class="sw" style="background:#2D1E6B;border-color:#2D1E6B"></div>
+      <div class="cap">Ink</div><div class="num">#2D1E6B<br>45, 30, 107</div>
+      <div class="note">Text and wordmark on light.</div></div>
+    <div class="card"><div class="sw" style="background:#FAFAFF"></div>
+      <div class="cap">Canvas</div><div class="num">#FAFAFF<br>250, 250, 255</div>
+      <div class="note">Light page background.</div></div>
+    <div class="card"><div class="sw" style="background:#EFECFF;border-color:#EFECFF"></div>
+      <div class="cap">Lavender</div><div class="num">#EFECFF<br>239, 236, 255</div>
+      <div class="note">Light cards, hover, separators.</div></div>
+    <div class="card"><div class="sw" style="background:#16102B;border-color:#16102B"></div>
+      <div class="cap">Night</div><div class="num">#16102B<br>22, 16, 43</div>
+      <div class="note">Dark page background, deep ink family.</div></div>
+    <div class="card"><div class="sw" style="background:#221847;border-color:#221847"></div>
+      <div class="cap">Night raised</div><div class="num">#221847<br>34, 24, 71</div>
+      <div class="note">Dark cards and panels.</div></div>
+  </div>
 
-  <h2>Usage</h2>
-  <div>
+  <h2>Same UI, both schemes</h2>
+  <div class="pair">
+    <section class="panel light">
+      <div class="cap">Light — canvas, ink text, deep purple links</div>
+      <div class="demo">
+        <p>Body copy sits in ink at 13.4:1. <a href="#">A link in deep purple</a> clears 5:1.</p>
+        <p class="muted">Muted copy #544585 at 7.9:1.</p>
+        <p style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0">
+          <button class="btn" type="button">Book a call</button>
+          <button class="btn ghost" type="button">See work</button>
+        </p>
+      </div>
+    </section>
+    <section class="panel dark">
+      <div class="cap">Dark — night canvas, white text, lilac links</div>
+      <div class="demo">
+        <p>Body copy is white on night at 18.4:1. <a href="#">A link in lilac</a> clears 6:1.</p>
+        <p class="muted">Muted copy #B9AEE6 at 9:1.</p>
+        <p style="display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0">
+          <button class="btn" type="button">Book a call</button>
+          <button class="btn ghost" type="button">See work</button>
+        </p>
+      </div>
+    </section>
+  </div>
+  <p class="note" style="margin-top:12px">Buttons keep the same deep purple fill with white text in both schemes: 5.3:1 either way. The brand purple stays on icons and fills; text purple shifts to lilac on night so both pass.</p>
+
+  <h2>Logo</h2>
+  <div class="pair">
+    <section class="panel light"><div class="cap">Light ground — purple mark, ink wordmark</div>
+      <img src="svg/markfluent-logo-horizontal.svg" alt="Markfluent horizontal logo" style="margin-top:16px">
+      <img src="svg/markfluent-logo-stacked.svg" alt="Markfluent stacked logo" style="width:150px;margin-top:24px">
+    </section>
+    <section class="panel dark"><div class="cap">Dark ground — purple mark, white wordmark</div>
+      <img src="svg/markfluent-logo-horizontal-reverse.svg" alt="Markfluent horizontal logo, reversed" style="margin-top:16px">
+      <img src="svg/markfluent-logo-stacked-reverse.svg" alt="Markfluent stacked logo, reversed" style="width:150px;margin-top:24px">
+    </section>
+  </div>
+
+  <h2>Icon and favicon</h2>
+  <div class="pair">
+    <section class="panel light"><div class="cap">Light</div>
+      <div class="sizes" style="margin-top:14px">
+        <figure><img src="svg/markfluent-icon.svg" style="width:88px;height:auto" alt=""><figcaption>88</figcaption></figure>
+        <figure><img src="svg/markfluent-icon.svg" style="width:48px;height:auto" alt=""><figcaption>48</figcaption></figure>
+        <figure><img src="svg/markfluent-icon.svg" style="width:32px;height:auto" alt=""><figcaption>32</figcaption></figure>
+        <figure><img src="svg/markfluent-favicon.svg" style="width:32px;height:auto" alt=""><figcaption>favicon</figcaption></figure>
+        <figure><img src="svg/markfluent-favicon.svg" style="width:16px;height:auto" alt=""><figcaption>16</figcaption></figure>
+      </div>
+    </section>
+    <section class="panel dark"><div class="cap">Dark — favicon tile follows the scheme</div>
+      <div class="sizes" style="margin-top:14px">
+        <figure><img src="svg/markfluent-icon-mono-white.svg" style="width:88px;height:auto" alt=""><figcaption>white</figcaption></figure>
+        <figure><img src="svg/markfluent-icon.svg" style="width:48px;height:auto" alt=""><figcaption>purple</figcaption></figure>
+        <figure><img src="svg/markfluent-icon.svg" style="width:32px;height:auto" alt=""><figcaption>32</figcaption></figure>
+        <figure class="tile"><img src="svg/markfluent-favicon.svg" style="width:32px;height:auto" alt=""><figcaption>tile</figcaption></figure>
+        <figure class="tile"><img src="svg/markfluent-favicon.svg" style="width:16px;height:auto" alt=""><figcaption>16</figcaption></figure>
+      </div>
+    </section>
+  </div>
+  <p class="note" style="margin-top:12px">The SVG favicon carries its own <code>prefers-color-scheme</code> rule: lavender tile with brand purple in light, night-raised tile with lilac in dark. PNG and .ico exports stay light — that is the fallback.</p>
+
+  <h2>Social card</h2>
+  <div class="card" style="padding:14px"><img src="svg/markfluent-social-card.svg" alt="Markfluent social card" style="display:block;width:100%;height:auto;border-radius:10px"></div>
+
+  <h2>Contrast</h2>
+  <table>
+    <thead><tr><th>Pair</th><th>Light</th><th>Dark</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Body text on background</td><td class="num">13.4:1</td><td class="num">18.4:1</td><td>AA / AAA</td></tr>
+      <tr><td>Muted text on background</td><td class="num">7.9:1</td><td class="num">9.0:1</td><td>AA / AAA</td></tr>
+      <tr><td>Accent text on background</td><td class="num">5.1:1</td><td class="num">6.2:1</td><td>AA</td></tr>
+      <tr><td>Brand purple on background</td><td class="num">4.1:1</td><td class="num">4.3:1</td><td>Icons, large text, 3:1 UI</td></tr>
+      <tr><td>Strong border on background</td><td class="num">3.5:1</td><td class="num">3.4:1</td><td>Non-text 3:1</td></tr>
+      <tr><td>White on button purple</td><td class="num">5.3:1</td><td class="num">5.3:1</td><td>AA</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Rules</h2>
+  <div class="rules">
     <div class="rule"><b>Clear</b><span>Leave at least the height of the funnel mark clear on every side. Nothing overlaps the lockup.</span></div>
     <div class="rule"><b>Minimum</b><span>Horizontal lockup 120&nbsp;px wide, stacked 96&nbsp;px wide, icon 16&nbsp;px. Below that use the favicon tile.</span></div>
-    <div class="rule"><b>Colour</b><span>Purple mark with ink wordmark on light surfaces; white wordmark with purple mark on ink. Never recolour the mark with a fourth colour.</span></div>
+    <div class="rule"><b>Light</b><span>Purple mark with ink wordmark on canvas, white or lavender.</span></div>
+    <div class="rule"><b>Dark</b><span>Purple mark with white wordmark on night or ink. Never ink text on a dark surface, and never white on lavender.</span></div>
     <div class="rule"><b>Don't</b><span>No stretching, outlines, shadows, gradients, rotation, or re-typing the wordmark in another font.</span></div>
   </div>
 
   <h2>Files</h2>
   <table>
-    <tr><th>Path</th><th>Use</th></tr>
-    <tr><td><code>svg/markfluent-logo-horizontal.svg</code></td><td>Header, footer, documents — default lockup</td></tr>
-    <tr><td><code>svg/markfluent-logo-horizontal-reverse.svg</code></td><td>Same, on ink or photographic dark ground</td></tr>
-    <tr><td><code>svg/markfluent-logo-stacked.svg</code></td><td>Square-ish spaces, print covers, merch</td></tr>
-    <tr><td><code>svg/markfluent-wordmark.svg</code></td><td>Wordmark alone (outlined Satoshi 700)</td></tr>
-    <tr><td><code>svg/markfluent-icon.svg</code></td><td>Mark alone, transparent background</td></tr>
-    <tr><td><code>svg/markfluent-favicon.svg</code></td><td>Favicon / app icon on lavender tile</td></tr>
-    <tr><td><code>png/</code></td><td>Raster exports: icons 1024/512/192, apple touch, favicon 32/16 + .ico, social card, lockups</td></tr>
-    <tr><td><code>tokens.json</code>, <code>brand.css</code></td><td>Colour, type and logo tokens for the site</td></tr>
+    <thead><tr><th>Path</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td><code>svg/markfluent-logo-horizontal.svg</code></td><td>Default lockup on light</td></tr>
+      <tr><td><code>svg/markfluent-logo-horizontal-reverse.svg</code></td><td>Same, on night or ink</td></tr>
+      <tr><td><code>svg/markfluent-logo-stacked.svg</code> / <code>-reverse.svg</code></td><td>Square-ish spaces, print, merch</td></tr>
+      <tr><td><code>svg/markfluent-wordmark.svg</code> / <code>-white.svg</code></td><td>Wordmark alone, outlined Satoshi 700</td></tr>
+      <tr><td><code>svg/markfluent-icon.svg</code></td><td>Mark alone, transparent</td></tr>
+      <tr><td><code>svg/markfluent-icon-mono-ink.svg</code> / <code>-mono-white.svg</code></td><td>Single-colour mark for stamps and overlays</td></tr>
+      <tr><td><code>svg/markfluent-favicon.svg</code></td><td>Favicon, adapts to the scheme</td></tr>
+      <tr><td><code>png/</code></td><td>Icons 1024/512/192, apple touch, favicon 32/16 + .ico, social card, lockups</td></tr>
+      <tr><td><code>tokens.json</code>, <code>brand.css</code></td><td>Palette, both colour schemes, type and logo tokens</td></tr>
+    </tbody>
   </table>
 </main>
+<script>
+  const root = document.documentElement;
+  const buttons = [...document.querySelectorAll('.switch button')];
+  const saved = localStorage.getItem('mf-theme');
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  const paint = () => {
+    const current = root.getAttribute('data-theme') || 'auto';
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === current)));
+  };
+  buttons.forEach(b => b.addEventListener('click', () => {
+    if (b.dataset.set === 'auto') { root.removeAttribute('data-theme'); localStorage.removeItem('mf-theme'); }
+    else { root.setAttribute('data-theme', b.dataset.set); localStorage.setItem('mf-theme', b.dataset.set); }
+    paint();
+  }));
+  paint();
+</script>
 </body>
 </html>
