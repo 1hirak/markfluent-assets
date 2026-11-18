@@ -1,0 +1,33 @@
+/* Markfluent brand tokens. Import once, then use the variables. */
+:root {
+  --mf-purple: #7e5eff;
+  --mf-purple-rgb: 126, 94, 255;
+  --mf-ink: #2d1e6b;
+  --mf-ink-rgb: 45, 30, 107;
+  --mf-canvas: #fafaff;
+  --mf-lavender: #efecff;
+  --mf-white: #ffffff;
+
+  --mf-font: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  --mf-radius: 12px;
+  --mf-logo-height: 32px;
+}
+
+.mf-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  text-decoration: none;
+  color: var(--mf-ink);
+}
+
+.mf-logo img,
+.mf-logo svg {
+  display: block;
+  height: var(--mf-logo-height);
+  width: auto;
+}
+
+.mf-logo--reverse {
+  color: var(--mf-white);
+}

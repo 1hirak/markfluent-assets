@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markfluent brand assets</title>
+<style>
+  @font-face{font-family:Satoshi;src:url('../fonts/satoshi-700.woff2') format('woff2');font-weight:700;font-display:swap}
+  @font-face{font-family:Satoshi;src:url('../fonts/satoshi-500.woff2') format('woff2');font-weight:500;font-display:swap}
+  :root{--purple:#7E5EFF;--ink:#2D1E6B;--canvas:#FAFAFF;--lav:#EFECFF;--line:#E4E0FA}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--canvas);color:var(--ink);font:500 16px/1.6 Satoshi,ui-sans-serif,system-ui,sans-serif}
+  main{max-width:1040px;margin:0 auto;padding:48px 24px 96px}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;letter-spacing:-0.02em;margin:0 0 8px}
+  h2{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#6b5ea8;margin:56px 0 16px}
+  p{margin:0 0 12px;max-width:62ch}
+  .lede{color:#4a3d7d;font-size:1.05rem}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+  .card.dark{background:var(--ink);border-color:var(--ink)}
+  .card.lav{background:var(--lav);border-color:var(--lav)}
+  .card img{display:block;width:100%;height:auto}
+  .cap{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:#7a6fae}
+  .card.dark .cap{color:#b9aee6}
+  .sw{height:88px;border-radius:12px;border:1px solid rgb(45 30 107 / .08)}
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#6b5ea8}
+  code{font-family:ui-monospace,SFMono-Regular,monospace;font-size:.9em;background:var(--lav);padding:2px 6px;border-radius:6px}
+  .row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .card img{max-width:100%}
+  .sizes figure{flex:0 0 auto}
+  .sizes img{display:block;max-width:none}
+  .sizes{display:flex;gap:28px;align-items:flex-end}
+  .sizes figure{margin:0;text-align:center}
+  .sizes figcaption{font-size:.7rem;color:#7a6fae;margin-top:8px}
+  .rule{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+  .rule b{flex:0 0 60px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#6b5ea8;padding-top:3px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Markfluent brand assets</h1>
+  <p class="lede">Purple flow mark, Satoshi wordmark. Everything here is vector and re-derivable — pick the asset you need and keep the ratios.</p>
+
+  <h2>Colour</h2>
+  <div class="grid">
+    <div class="card"><div class="sw" style="background:#7E5EFF"></div><div class="cap">Primary purple</div><div>#7E5EFF<br>126, 94, 255</div></div>
+    <div class="card"><div class="sw" style="background:#2D1E6B"></div><div class="cap">Ink</div><div>#2D1E6B<br>45, 30, 107</div></div>
+    <div class="card"><div class="sw" style="background:#FAFAFF"></div><div class="cap">Canvas</div><div>#FAFAFF<br>250, 250, 255</div></div>
+    <div class="card"><div class="sw" style="background:#EFECFF"></div><div class="cap">Lavender</div><div>#EFECFF<br>239, 236, 255</div></div>
+  </div>
+
+  <h2>Logo</h2>
+  <div class="grid">
+    <div class="card"><div class="cap">Horizontal — primary</div><img src="svg/markfluent-logo-horizontal.svg" alt="Markfluent logo"></div>
+    <div class="card dark"><div class="cap">Horizontal — reverse</div><img src="svg/markfluent-logo-horizontal-reverse.svg" alt="Markfluent logo, reversed"></div>
+    <div class="card"><div class="cap">Stacked</div><img src="svg/markfluent-logo-stacked.svg" alt="Markfluent stacked logo" style="width:70%;margin:0 auto"></div>
+    <div class="card lav"><div class="cap">Wordmark</div><img src="svg/markfluent-wordmark.svg" alt="Markfluent wordmark"></div>
+  </div>
+
+  <h2>Icon and favicon</h2>
+  <div class="card">
+    <div class="sizes">
+      <figure><img src="svg/markfluent-icon.svg" style="width:96px;height:auto" alt=""><figcaption>96</figcaption></figure>
+      <figure><img src="svg/markfluent-icon.svg" style="width:48px;height:auto" alt=""><figcaption>48</figcaption></figure>
+      <figure><img src="svg/markfluent-icon.svg" style="width:32px;height:auto" alt=""><figcaption>32</figcaption></figure>
+      <figure><img src="svg/markfluent-favicon.svg" style="width:32px;height:auto" alt=""><figcaption>favicon</figcaption></figure>
+      <figure><img src="svg/markfluent-favicon.svg" style="width:16px;height:auto" alt=""><figcaption>16</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Social card</h2>
+  <div class="card"><img src="svg/markfluent-social-card.svg" alt="Markfluent social card"></div>
+
+  <h2>Usage</h2>
+  <div>
+    <div class="rule"><b>Clear</b><span>Leave at least the height of the funnel mark clear on every side. Nothing overlaps the lockup.</span></div>
+    <div class="rule"><b>Minimum</b><span>Horizontal lockup 120&nbsp;px wide, stacked 96&nbsp;px wide, icon 16&nbsp;px. Below that use the favicon tile.</span></div>
+    <div class="rule"><b>Colour</b><span>Purple mark with ink wordmark on light surfaces; white wordmark with purple mark on ink. Never recolour the mark with a fourth colour.</span></div>
+    <div class="rule"><b>Don't</b><span>No stretching, outlines, shadows, gradients, rotation, or re-typing the wordmark in another font.</span></div>
+  </div>
+
+  <h2>Files</h2>
+  <table>
+    <tr><th>Path</th><th>Use</th></tr>
+    <tr><td><code>svg/markfluent-logo-horizontal.svg</code></td><td>Header, footer, documents — default lockup</td></tr>
+    <tr><td><code>svg/markfluent-logo-horizontal-reverse.svg</code></td><td>Same, on ink or photographic dark ground</td></tr>
+    <tr><td><code>svg/markfluent-logo-stacked.svg</code></td><td>Square-ish spaces, print covers, merch</td></tr>
+    <tr><td><code>svg/markfluent-wordmark.svg</code></td><td>Wordmark alone (outlined Satoshi 700)</td></tr>
+    <tr><td><code>svg/markfluent-icon.svg</code></td><td>Mark alone, transparent background</td></tr>
+    <tr><td><code>svg/markfluent-favicon.svg</code></td><td>Favicon / app icon on lavender tile</td></tr>
+    <tr><td><code>png/</code></td><td>Raster exports: icons 1024/512/192, apple touch, favicon 32/16 + .ico, social card, lockups</td></tr>
+    <tr><td><code>tokens.json</code>, <code>brand.css</code></td><td>Colour, type and logo tokens for the site</td></tr>
+  </table>
+</main>
+</body>
+</html>
